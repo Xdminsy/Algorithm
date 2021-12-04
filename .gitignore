@@ -72,3 +72,8 @@ test/test_runner
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+
+
+### Visual studio
+out/
+.vs/
