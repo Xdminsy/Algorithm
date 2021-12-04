@@ -1,3 +1,4 @@
+#include <iostream>
 #include <vector>
 #include <unordered_map>
 
@@ -15,3 +16,10 @@ public:
         return {0, 1};
     }
 };
+
+int main() {
+    Solution solution;
+    vector<int> v{ 1, 2, 3, 4 };
+    auto result = solution.twoSum(v, 3);
+    cout << result[0] << ", " << result[1] << endl;
+}
