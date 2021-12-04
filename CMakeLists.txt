@@ -6,11 +6,17 @@ target_compile_features(compiler_flags INTERFACE cxx_std_20)
 
 list(APPEND libs compiler_flags)
 
-file(GLOB files CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+# find all source files
+file(GLOB_RECURSE files
+        CONFIGURE_DEPENDS
+        RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/src"
+        "*.cpp" "*.c" "*.cxx")
 
 foreach(file ${files})
-    get_filename_component(name ${file} NAME)
-    add_executable(${name} ${file})
-    target_link_libraries(${name} ${libs})
-    message(STATUS "Target executable: ${name}")
+    if (NOT ${file} MATCHES "^\\.\\.") # Select only files in src folder.
+        string(REGEX REPLACE "/" "." name ${file})
+        add_executable(${name} "src/${file}")
+        target_link_libraries(${name} ${libs})
+        message(STATUS "TARGET: ${name} SOURCE: ${file}")
+    endif ()
 endforeach()
