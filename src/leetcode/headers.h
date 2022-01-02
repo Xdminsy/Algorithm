@@ -42,4 +42,4 @@ using namespace std;
 
 #endif //ALGORITHM_HEADERS_H
 
-setvbuf(stdout, NULL, _IONBF, 0); // Fix no console output in Clion debugger.
+// setvbuf(stdout, NULL, _IONBF, 0); // Fix no console output in Clion debugger.
